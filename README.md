@@ -40,4 +40,4 @@ urlpatterns = [
    
    return HttpResponse(f'Спасибо, {name}! Сообщение получено.')
 
-3.
+3. 
