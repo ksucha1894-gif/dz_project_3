@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Category(models.Model):
     name = models.CharField(max_length=150, verbose_name="Наименование")
     description = models.TextField(verbose_name="Описание", blank=True, null=True)
@@ -22,9 +23,7 @@ class Product(models.Model):
         Category, on_delete=models.CASCADE, verbose_name="Категория"
     )
     price = models.IntegerField(verbose_name="Цена за покупку")
-    created_at = models.DateTimeField(
-        auto_now_add=True, verbose_name="Дата создания"
-    )
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     updated_at = models.DateTimeField(
         auto_now=True, verbose_name="Дата последнего изменения"
     )

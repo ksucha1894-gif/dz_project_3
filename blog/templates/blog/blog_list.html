@@ -1,20 +1,21 @@
-{% extends 'base.html' %}
+{% extends 'blog/base.html' %}
 {% load my_tags %}
 {% block content %}
 <div class="album py-5 bg-body-tertiary">
     <div class="container">
         <div class="row">
-            {% for product in products %}
+            {% for blog in object_list %}
             <div class="col-4">
                 <div class="card shadow-sm">
-                    <img src="{{ product.image | media_filter }}">
+                    <a href="{% url 'blog:blog_detail' blog.pk %}">{{ blog.name }}</a>
+                    <img src="{{ blog.image | media_filter }}">
                     <div class="card-body"><p class="card-text">
-                        <p class="card-text">Наименование: {{ product.name }}</p>
-                        <p class="card-text">Описание: {{ product.description|slice:":100" }}</p>
-                        <p class="card-text">Цена за покупку: {{ product.price }}</p>
+                        <p class="card-text">Наименование: {{ blog.name }}</p>
+                        <p class="card-text">Описание: {{ blog.description|slice:":100" }}</p>
+                        <p class="card-text">Количество просмотров: {{ blog.view_count }}</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <a class="btn btn-primary" href="{% url 'catalog:product_detail' product.pk %}"
+                                <a class="btn btn-primary" href="{% url 'blog:blog_detail' blog.pk %}"
                                    role="button">Посмотреть</a>
                             </div>
                             <small class="text-body-secondary">9 mins</small></div>
