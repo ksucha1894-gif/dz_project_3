@@ -11,7 +11,9 @@ class Blog(models.Model):
     publication_sign = models.BooleanField(
         default=True, verbose_name="Признак публикации"
     )
-    view_count = models.IntegerField(verbose_name="Количество просмотров")
+    view_count = models.PositiveIntegerField(
+        verbose_name="Количество просмотров", default=0
+    )
 
     class Meta:
         verbose_name = "Запись"
