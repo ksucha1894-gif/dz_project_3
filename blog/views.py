@@ -12,15 +12,22 @@ class BlogListView(ListView):
     template_name = "blog/blog_list.html"
     context_object_name = "blog"
 
+    def get_queryset(self):
+        return Blog.objects.filter(name=True)
+
 
 class BlogDetailView(DetailView):
     model = Blog
     template_name = "blog/blog_detail.html"
     context_object_name = "blog"
 
+    def __init__(self):
+        super().__init__()
+        self.object = None
+
     def get_object(self, queryset=None):
         self.object = super().get_object(queryset)
-        self.object.views.counter += 1
+        self.object.view_count += 1
         self.object.save()
         return self.object
 
