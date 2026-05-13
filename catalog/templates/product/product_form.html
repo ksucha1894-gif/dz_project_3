@@ -1,9 +1,9 @@
 {% extends 'product/base.html' %}
-{% block title %}Форма для записи{% endblock %}
+{% block title %}Форма продукта{% endblock %}
 {% block content %}
 <div class="container">
     <div class="row py-lg-5 text-center">
-        <h1 class="fw-light">Создать запись</h1>
+        <h1 class="fw-light">Создать продукт</h1>
     </div>
     <div class="row">
         <div class="col">
@@ -20,7 +20,7 @@
                                 Создать
                                 {% endif %}
                             </button>
-                            <a href="{% url 'blog:blog_list' %}" class="btn btn-primary">Отменить</a>
+                            <a href="{% url 'catalog:product_list' %}" class="btn btn-primary">Отменить</a>
                         </div>
                     </div>
                 </div>

@@ -10,10 +10,9 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 class BlogListView(ListView):
     model = Blog
     template_name = "blog/blog_list.html"
-    context_object_name = "blog"
 
     def get_queryset(self):
-        return Blog.objects.filter(name=True)
+        return super().get_queryset().filter(publication_sign=True)
 
 
 class BlogDetailView(DetailView):

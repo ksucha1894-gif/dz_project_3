@@ -1,10 +1,14 @@
-{% extends 'blog/base.html' %}
+{% extends 'product/base.html' %}
 {% load my_tags %}
 {% block content %}
 <div class="album py-5 bg-body-tertiary">
+    <div class="row py-lg-4 text-center">
+        <h1 class="fw-light">Список блоговых записей</h1>
+    </div>
     <div class="container">
         <div class="row">
             {% for blog in object_list %}
+            1
             <div class="col-4">
                 <div class="card shadow-sm">
                     <a href="{% url 'blog:blog_detail' blog.pk %}">{{ blog.name }}</a>
