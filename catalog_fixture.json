@@ -1,0 +1,31 @@
+[
+{
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+        "name": "Мясо",
+        "description": null
+    }
+},
+{
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+        "name": "Хлеб",
+        "description": null
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+        "name": "Батон",
+        "description": null,
+        "image": "",
+        "category": 2,
+        "price": 20,
+        "created_at": "2026-04-12T21:16:25.134Z",
+        "updated_at": "2026-04-12T21:16:25.134Z"
+    }
+}
+]
