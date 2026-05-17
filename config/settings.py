@@ -21,6 +21,10 @@ from django.conf.global_settings import (
     DEFAULT_AUTO_FIELD,
     MEDIA_URL,
     MEDIA_ROOT,
+    AUTH_USER_MODEL,
+    LOGIN_REDIRECT_URL,
+    LOGOUT_REDIRECT_URL,
+    EMAIL_BACKEND,
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -50,6 +54,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "catalog",
     "blog",
+    "newuser",
 ]
 
 MIDDLEWARE = [
@@ -138,3 +143,19 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+AUTH_USER_MODEL = "newuser.Newuser"
+
+LOGIN_REDIRECT_URL = "/catalog/"
+LOGOUT_REDIRECT_URL = "/catalog/"
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.yandex.ru"
+EMAIL_PORT = 465
+EMAIL_HOST_USER = "xenia.rip@yandex.ru"
+EMAIL_HOST_PASSWORD = "kgyuemkfllbmsfnh"
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+
+SERVER_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

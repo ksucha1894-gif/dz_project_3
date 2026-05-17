@@ -1,0 +1,21 @@
+{% extends 'product/base.html' %}
+{% block title %}Форма для записи{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row py-lg-5 text-center">
+        <form class="row" method="post" enctype="multipart/form-data">
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-body">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        Войти
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
