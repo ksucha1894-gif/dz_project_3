@@ -14,10 +14,16 @@
                         <p class="card-text">Цена за покупку: {{product.price}}</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
+                                {% if user == product.owner %}
+                                <a class="btn btn-primary" href="{% url 'catalog:product_update' product.pk %}"
+                                   role="button">Редактировать</a>
+                                {% endif %}
                                 <a class="btn btn-primary" href="{% url 'catalog:product_detail' product.pk %}"
                                    role="button">Посмотреть</a>
+                                <a class="btn btn-primary" href="{% url 'catalog:product_delete' product.pk %}"
+                                   role="button">Удалить</a>
                             </div>
-                            <small class="text-body-secondary">9 mins</small></div>
+                            <small class="text-body-secondary"></small></div>
                     </div>
                 </div>
             </div>

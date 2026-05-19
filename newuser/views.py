@@ -7,10 +7,11 @@ from django.urls import reverse_lazy
 from newuser.models import Newuser
 from newuser.forms import NewuserRegisterForm
 from config.settings import EMAIL_HOST_USER
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import redirect
+from django.urls import reverse
 
 
-class NewuserCreateView(LoginRequiredMixin, CreateView):
+class NewuserCreateView(CreateView):
     model = Newuser
     form_class = NewuserRegisterForm
     success_url = reverse_lazy("newuser:login")

@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from newuser.models import Newuser
+
+
+@admin.register(Newuser)
+class NewuserAdmin(admin.ModelAdmin):
+    list_display = ("id", "email")
