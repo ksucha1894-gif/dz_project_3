@@ -33,9 +33,8 @@ class ProductDetailView(LoginRequiredMixin, DetailView):
 
     def get_object(self, queryset=None):
         self.object = super().get_object(queryset)
-        if self.request.user == self.object.owner:
-            self.object.views_counter += 1
-            salf.object.save()
+        if self.request.user == self.object.owner or self.request.user.has_perm("catalog.can_unpublish_product",
+                                                                                "catalog.can_delete_product"):
             return self.object
         raise PermissionDenied
 
