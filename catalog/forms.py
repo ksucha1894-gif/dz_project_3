@@ -8,6 +8,7 @@ class ProductForm(ModelForm):
         model = Product
         exclude = ("owner",)
 
+
     def __init__(self, *args, **kwargs):
         super(ProductForm, self).__init__(*args, **kwargs)
         self.fields["name"].widget.attrs.update(
@@ -38,6 +39,7 @@ class ProductForm(ModelForm):
         "радар",
     ]
 
+
     def clean(self):
         cleaned_data = super().clean()
         name = cleaned_data.get("name", "").lower()
@@ -50,6 +52,7 @@ class ProductForm(ModelForm):
                 )
 
         return cleaned_data
+
 
     def clean_price(self):
         price = self.cleaned_data.get("price")
