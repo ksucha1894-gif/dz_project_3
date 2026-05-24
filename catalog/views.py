@@ -12,14 +12,31 @@ from catalog.forms import ProductForm, ProductModeratorForm
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseForbidden
 from django.views.generic import ListView, TemplateView, DetailView
-from catalog.models import Product
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+
+from catalog.services import get_product_from_cache, get_products_by_category
+from django.shortcuts import render
 
 
 class ProductListView(ListView):
     model = Product
     template_name = "product/product_list.html"
     context_object_name = "object_list"
+
+
+    def get_queryset(self):
+        return get_product_from_cache()
+
+
+class ProductsByCategoryView(ListView):
+    model = Product
+    template_name = "product/products_by_category.html"
+    context_object_name = "object_list"
+
+
+    def get_queryset(self):
+        category_id = self.kwargs["category_id"]
+        return get_products_by_category(category_id)
 
 
 class ProductDetailView(LoginRequiredMixin, DetailView):
