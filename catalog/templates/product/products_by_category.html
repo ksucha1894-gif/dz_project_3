@@ -1,0 +1,9 @@
+{% extends 'product/base.html' %}
+{% load my_tags %}
+{% block content %}
+<ul>
+    {% for product in object_list %}
+        <li>{{ product.name }} - {{ product.price }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

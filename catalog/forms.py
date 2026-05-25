@@ -6,7 +6,8 @@ from catalog.models import Product
 class ProductForm(ModelForm):
     class Meta:
         model = Product
-        fields = "__all__"
+        exclude = ("owner",)
+
 
     def __init__(self, *args, **kwargs):
         super(ProductForm, self).__init__(*args, **kwargs)
@@ -38,6 +39,7 @@ class ProductForm(ModelForm):
         "радар",
     ]
 
+
     def clean(self):
         cleaned_data = super().clean()
         name = cleaned_data.get("name", "").lower()
@@ -51,8 +53,15 @@ class ProductForm(ModelForm):
 
         return cleaned_data
 
+
     def clean_price(self):
         price = self.cleaned_data.get("price")
         if price < 0:
             raise ValidationError("Цена не может быть отрицательной!")
         return price
+
+
+class ProductModeratorForm(ModelForm):
+    class Meta:
+        model = Product
+        fields = ("name", "publish")

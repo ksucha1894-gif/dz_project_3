@@ -6,6 +6,12 @@
             <div class="col-sm-4 offset-md-1 py-4"><h4>Навигация</h4>
                 <ul class="list-unstyled">
                     <li><a href="{% url 'catalog:product_list' %}" class="text-white">Главная</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'newuser:logout' %}" class="text-white">Выход</a></li>
+                    {% else %}
+                    <li><a href="{% url 'newuser:login' %}" class="text-white">Вход</a></li>
+                    <li><a href="{% url 'newuser:register' %}" class="text-white">Регистрация</a></li>
+                    {% endif %}
                     <li><a href="{% url 'catalog:contacts' %}" class="text-white">Контакты</a></li>
                     <li><a href="#" class="text-white">Товар</a></li>
                 </ul>
